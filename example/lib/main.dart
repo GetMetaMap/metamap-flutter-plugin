@@ -7,8 +7,8 @@ import 'package:mati_flutter/mati_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 
-final clientId = "CLIENT_ID"
-final flowId = "FLOW_ID"
+final clientId = "CLIENT_ID";
+final flowId = "FLOW_ID";
 final metadata = Map<String, dynamic>()
   ..["key1"] = "String value"
   ..["key2"] = 2;
