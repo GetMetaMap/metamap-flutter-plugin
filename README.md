@@ -5,8 +5,7 @@
 
 Let's start with setting up dependencies 
 
-mati_flutter:
-    path: TODO
+mati_plugin_flutter: CURRENT_VERSION
 
 And in oreder to use sdk for iOS please add those dependencies to your Podfile
 

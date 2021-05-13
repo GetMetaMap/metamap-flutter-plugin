@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:mati_flutter/mati_flutter.dart';
+import 'package:mati_plugin_flutter/mati_plugin_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 
