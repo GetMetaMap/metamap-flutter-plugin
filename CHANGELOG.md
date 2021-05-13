@@ -1,1 +1,1 @@
-### First version
+### 1.0.0 Is initial version of the plugin
