@@ -26,7 +26,7 @@ In order to start Mati verification flow you should сonsecutively call those 2 
 ```
 
 ```
-
+  MatiFlutter.showMatiFlow()
 ```
 And to listen for verificaiton result please wait for
 
