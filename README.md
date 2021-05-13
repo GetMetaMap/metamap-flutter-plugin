@@ -9,11 +9,10 @@ Let's start with setting up dependencies
 mati_plugin_flutter: CURRENT_VERSION_OF_MATI_PLUGIN_FLUTTER
 ```
 
-And in oreder to use sdk for iOS please add those dependencies to your Podfile
+And in order to use sdk for iOS please add those dependencies to your Podfile
 
 ```
   pod 'Mati-Global-ID-SDK'
-  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 ```
 
 
