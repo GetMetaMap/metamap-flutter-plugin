@@ -1,8 +1,8 @@
 name: mati_flutter
-description: A new Flutter plugin.
+description: Flutter plugin for Mati SDK.
 version: 1.0.0
-author: ''
-homepage:
+author: 'Aleksei Klyshnikov'
+homepage: 'https://github.com/aleksei-klyshnikov-mati'
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
