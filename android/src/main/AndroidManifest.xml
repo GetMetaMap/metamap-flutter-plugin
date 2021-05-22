@@ -1,2 +1,3 @@
-<manifest package="com.getmati.mati_flutter">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.getmati.mati_plugin_flutter">
 </manifest>

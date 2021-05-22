@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import MatiSDK
 
-public class SwiftMatiFlutterPlugin: NSObject, FlutterPlugin, MatiButtonResultDelegate {
+public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonResultDelegate {
     private let matiButton = MatiButton()
     let channel: FlutterMethodChannel
     
@@ -12,7 +12,7 @@ public class SwiftMatiFlutterPlugin: NSObject, FlutterPlugin, MatiButtonResultDe
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "mati_flutter", binaryMessenger: registrar.messenger())
-        let instance = SwiftMatiFlutterPlugin(channel)
+        let instance = SwiftMatiPluginFlutterPlugin(channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     

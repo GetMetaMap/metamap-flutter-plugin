@@ -1,5 +1,5 @@
-group 'com.getmati.mati_flutter'
-version '1.0'
+group 'com.getmati.mati_plugin_flutter'
+version '1.0.1'
 
 buildscript {
     ext.kotlin_version = '1.3.50'
@@ -25,13 +25,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        targetSdkVersion 29
         minSdkVersion 21
     }
 }

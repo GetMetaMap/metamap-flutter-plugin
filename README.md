@@ -5,16 +5,29 @@
 
 Let's start with setting up dependencies 
 
+Please add `mati_plugin_flutter` dependency to your pubspec.yaml 
 ```
-mati_plugin_flutter: CURRENT_VERSION_OF_MATI_PLUGIN_FLUTTER
-```
-
-And in order to use sdk for iOS please add those dependencies to your Podfile
-
-```
-  pod 'Mati-Global-ID-SDK'
+  mati_plugin_flutter: 1.0.1
 ```
 
+### Android
+
+For android make sure that `minSdkVersion` inside YOUR_APP/build.gradle is at least `21`
+
+### IOS
+
+Make sure you got the following to info.plist
+
+```
+  <key>NSCameraUsageDescription</key>
+  <string>Mati verification SDK requires camera use</string>
+
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Mati verification SDK requires microphone use</string>
+
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Mati verification SDK requires access to media library</string>
+```
 
 ## Code
 

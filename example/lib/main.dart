@@ -23,8 +23,6 @@ class ClientApp extends StatefulWidget {
 }
 
 class _ClientAppState extends State<ClientApp> {
-  String _platformVersion = 'Unknown';
-
   @override
   void initState() {
     super.initState();
@@ -49,7 +47,7 @@ class _ClientAppState extends State<ClientApp> {
         body: Center(
           child: TextButton (
             child: Text(
-              _platformVersion.toUpperCase()),
+              "Start verification"),
             onPressed: () async => {
               log(await MatiFlutter.showMatiFlow())
             }
