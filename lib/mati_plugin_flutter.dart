@@ -7,17 +7,13 @@ class MatiFlutter {
 
   static const MethodChannel _channel = const MethodChannel('mati_flutter');
 
-  static Future<String> setParams(String clientId, String flowId, Map<String, dynamic> metadata) async {
-    _channel.setMethodCallHandler(handler);
-    return await _channel.invokeMethod('startVerification', <String, dynamic> {
+  static Future<String> showMatiFlow(String clientId, String flowId, Map<String, dynamic> metadata) async {
+  _channel.setMethodCallHandler(handler);
+    return await _channel.invokeMethod('showMatiFlow', <String, dynamic> {
       'clientId': clientId,
       'flowId': flowId,
       'metadata': metadata,
     });
-  }
-
-  static Future<String> showMatiFlow() async {
-    return await _channel.invokeMethod('showMatiFlow');
   }
 
   static Future<Result> handler(MethodCall call) async {

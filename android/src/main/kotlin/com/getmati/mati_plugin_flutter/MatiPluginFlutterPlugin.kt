@@ -57,18 +57,16 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
-      "startVerification" -> {
+      "showMatiFlow" -> {
         clientId = call.argument("clientId")!!
         flowId = call.argument("flowId")
         metadata = call.argument("metadata")
-        result.success("startVerification ${android.os.Build.VERSION.RELEASE}")
-      }
-      "showMatiFlow" -> {
+
+ 
         activity?.let { activity ->
-          MatiSdk.startFlow(
-            activity,
-            clientId,
-            flowId,
+          MatiSdk.INSTANCE.startFlow(activity,
+                        clientId,
+                        flowId,,
             Metadata.Builder().apply {
               metadata?.entries?.forEach {
                 this.with(it.key, it.value)
