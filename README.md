@@ -1,5 +1,4 @@
-# Mati Flutter plugin – BETA VERSION
-
+# Mati Flutter plugin
 
 ## Installation
 
