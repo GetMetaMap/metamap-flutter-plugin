@@ -1,1 +1,1 @@
-### 1.0.0 Is initial version of the plugin
+### 2.0.0 Updated versions of Mati-sdk for both iOS and Android
