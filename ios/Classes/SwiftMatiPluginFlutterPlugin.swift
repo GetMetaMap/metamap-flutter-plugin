@@ -3,7 +3,7 @@ import UIKit
 import MatiSDK
 
 public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonResultDelegate {
-    private let matiButton = MatiButton()
+  
     let channel: FlutterMethodChannel
     
     init(_ channel: FlutterMethodChannel) {
