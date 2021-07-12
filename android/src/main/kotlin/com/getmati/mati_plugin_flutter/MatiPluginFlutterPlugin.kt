@@ -64,7 +64,7 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
 
  
         activity?.let { activity ->
-          MatiSdk.INSTANCE.startFlow(activity,
+          MatiSdk.startFlow(activity,
                         clientId,
                         flowId,
             Metadata.Builder().apply {
@@ -73,7 +73,6 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
               }
             }.build()
           )
-
           result.success("showMatiFlow ${android.os.Build.VERSION.RELEASE}")
         }
       }

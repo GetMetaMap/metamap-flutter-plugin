@@ -1,1 +1,1 @@
-### 2.0.1 Updated flutter version
+### 2.1.0 Updated flutter version fixed issues with android code
