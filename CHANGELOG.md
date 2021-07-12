@@ -1,1 +1,1 @@
-### 2.0.0 Updated versions of Mati-sdk for both iOS and Android
+### 2.0.1 Updated flutter version

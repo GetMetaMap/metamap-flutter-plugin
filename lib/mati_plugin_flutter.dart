@@ -16,7 +16,7 @@ class MatiFlutter {
     });
   }
 
-  static Future<Result> handler(MethodCall call) async {
+  static Future<Result?> handler(MethodCall call) async {
     switch (call.method) {
       case "cancelled":
           resultCompleter.complete(ResultCancelled());
