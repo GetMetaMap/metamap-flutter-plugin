@@ -66,7 +66,7 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
         activity?.let { activity ->
           MatiSdk.INSTANCE.startFlow(activity,
                         clientId,
-                        flowId,,
+                        flowId,
             Metadata.Builder().apply {
               metadata?.entries?.forEach {
                 this.with(it.key, it.value)
