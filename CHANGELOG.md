@@ -1,1 +1,1 @@
-### 2.1.0 Updated flutter version fixed issues with android code
+### 2.2.0 Fixed issue with proguard

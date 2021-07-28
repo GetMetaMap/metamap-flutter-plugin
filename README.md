@@ -6,7 +6,7 @@ Let's start with setting up dependencies
 
 Please add `mati_plugin_flutter` dependency to your pubspec.yaml 
 ```
-  mati_plugin_flutter: 2.1.0
+  mati_plugin_flutter: 2.2.0
 ```
 
 ### Android
