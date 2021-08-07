@@ -23,7 +23,7 @@ public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonRe
             let flowId = arguments["flowId"] as? String
             let metadata = arguments["metadata"] as? [String : Any]
             
-            MatiSDK.shared.showMatiFlow(clientId: clientId,
+            Mati.shared.showMatiFlow(clientId: clientId,
                                     flowId: flowId,
                                     metadata: metadata)
 
