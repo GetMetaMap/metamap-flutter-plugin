@@ -3,13 +3,15 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class MatiFlutter {
-  static final resultCompleter = Completer<Result>();
+  static var resultCompleter;
 
   static const MethodChannel _channel = const MethodChannel('mati_flutter');
 
   static Future<String> showMatiFlow(String clientId, String flowId, Map<String, dynamic> metadata) async {
   _channel.setMethodCallHandler(handler);
-    return await _channel.invokeMethod('showMatiFlow', <String, dynamic> {
+  resultCompleter = Completer<Result>();
+
+  return await _channel.invokeMethod('showMatiFlow', <String, dynamic> {
       'clientId': clientId,
       'flowId': flowId,
       'metadata': metadata,
