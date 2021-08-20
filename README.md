@@ -1,23 +1,30 @@
-# Mati Flutter plugin - beta
+# Mati Flutter Plugin User Guide &mdash; BETA
 
-## Installation
+_**IMPORTANT**_ The Mati Flutter plugin may change significantly as it undergoes testing.
 
-Let's start with setting up dependencies 
+## Dependencies
 
-Please add `mati_plugin_flutter` dependency to your pubspec.yaml 
+Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
+
+```yaml
+  mati_plugin_flutter: 3.3.1
 ```
-  mati_plugin_flutter: 2.2.0
-```
+
+## Install the Flutter Plugin
+
+Install the Mati Flutter plugin for:
+* [Android](#android)
+* [iOS](#ios)
 
 ### Android
 
-For android make sure that `minSdkVersion` inside YOUR_APP/build.gradle is at least `21`
+For Android check that the `minSdkVersion` in `<YOUR_APP>/build.gradle` is &#8805;21
 
-### IOS
+### iOS
 
-Make sure you got the following to info.plist
+Add the following to `info.plist`:
 
-```
+```xml
   <key>NSCameraUsageDescription</key>
   <string>Mati verification SDK requires camera use</string>
 
@@ -28,33 +35,29 @@ Make sure you got the following to info.plist
   <string>Mati verification SDK requires access to media library</string>
 ```
 
-## Code
+## Implement Mati in Your App
 
-In order to start Mati verification flow you should call 
+To start the Mati verification flow, call the following when the user taps on the Mati button:
 
-```
+```java
   MatiFlutter.showMatiFlow(CLIENT_ID, FLOW_ID, METADATA)
 ```
-Inside button on pressed
 
-And to listen for verificaiton result please wait for
 
-```
-  MatiFlutter.resultCompleter.future
-```
+The verification results will arrive in `MatiFlutter.resultCompleter.future` in a reply similar to the following:
 
-with the code similar to the following
-
-```
+```c++
 MatiFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
       msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM));
 ```
 
-Here  is demo example demo example
+### Example Application
 
-```
+The following is an example application (MyApp) with the Mati verification flow:
+
+```c++
 import 'package:flutter/material.dart';
 import 'package:mati_plugin_flutter/mati_plugin_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -109,4 +112,3 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 ```
-
