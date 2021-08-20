@@ -4,6 +4,7 @@ _**IMPORTANT**_ The Mati Flutter plugin may change significantly as it undergoes
 
 ## Dependencies
 
+
 Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
 
 ```yaml
