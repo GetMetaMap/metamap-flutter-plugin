@@ -10,6 +10,7 @@ class MatiFlutter {
   static Future<String> showMatiFlow(String clientId, String flowId, Map<String, dynamic> metadata) async {
   _channel.setMethodCallHandler(handler);
   resultCompleter = Completer<Result>();
+  metadata["sdkType"] = "flutter";
 
   return await _channel.invokeMethod('showMatiFlow', <String, dynamic> {
       'clientId': clientId,
