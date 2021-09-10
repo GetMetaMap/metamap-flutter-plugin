@@ -1,1 +1,1 @@
-### 2.3.1 Fixed issue with callback after flow gets cancelled
+### 2.4.1 Updated Android library
