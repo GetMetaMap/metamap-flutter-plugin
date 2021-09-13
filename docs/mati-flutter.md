@@ -1,8 +1,18 @@
-# Mati Flutter Plugin &mdash; BETA
+---
+title: "Flutter"
+excerpt: "Add the Mati button to your Flutter app."
+slug: "mobile-sdks"
+category: 61141a8437375100442f3d20
+---
+
+# Mati for Flutter Usage Guide &mdash; BETA
 
 
+_**IMPORTANT**_ Mati for Flutter may change significantly as it undergoes testing.
 
-_**IMPORTANT**_ The Mati Flutter plugin may change significantly as it undergoes testing.
+## Flutter Demo App
+
+You can go to GitHub to download the [Mati Flutter demo app](https://github.com/GetMati/mati-mobile-examples/tree/main/flutterDemoApp).
 
 ## Dependencies
 
@@ -13,7 +23,7 @@ Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
   mati_plugin_flutter: 3.3.1
 ```
 
-## Install the Flutter Plugin
+## Install Mati for Flutter
 
 Install the Mati Flutter plugin for:
 * [Android](#android)
