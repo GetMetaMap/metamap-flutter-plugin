@@ -3,12 +3,11 @@ title: "Flutter"
 excerpt: "Add the Mati button to your Flutter app."
 slug: "mobile-sdks"
 category: 61141a8437375100442f3d20
+hidden: true
 ---
 
-# Mati for Flutter Usage Guide &mdash; BETA
+# Mati for Flutter Usage Guide
 
-
-_**IMPORTANT**_ Mati for Flutter may change significantly as it undergoes testing.
 
 ## Flutter Demo App
 
