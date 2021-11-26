@@ -34,6 +34,8 @@ For Android check that the `minSdkVersion` in `<YOUR_APP>/build.gradle` is &#880
 
 ### iOS
 
+For iOS Minimum iOS version should be 12+
+
 Add the following to `info.plist`:
 
 ```xml
