@@ -1,1 +1,1 @@
-### 2.4.2 Updated Android library
+### 2.4.7 Fixed color issue for android
