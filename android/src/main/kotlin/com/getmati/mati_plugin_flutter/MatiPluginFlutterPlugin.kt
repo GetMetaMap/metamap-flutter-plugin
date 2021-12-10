@@ -1,6 +1,7 @@
 package com.getmati.mati_plugin_flutter
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.NonNull
@@ -62,14 +63,17 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
         flowId = call.argument("flowId")
         metadata = call.argument("metadata")
 
- 
         activity?.let { activity ->
           MatiSdk.startFlow(activity,
                         clientId,
                         flowId,
             Metadata.Builder().apply {
               metadata?.entries?.forEach {
-                this.with(it.key, it.value)
+                  this.with(it.key, if(it.key in arrayOf("buttonColor", "buttonTextColor")) {
+                      Color.parseColor(it.value as String)
+                  } else {
+                      it.value
+                  })
               }
             }.build()
           )

@@ -1,1 +1,1 @@
-### 2.3.1 Fixed issue with callback after flow gets cancelled
+### 2.4.7 Fixed color issue for android
