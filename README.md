@@ -1,6 +1,4 @@
-# Mati Flutter User Guide &mdash; BETA
+# Metamap Flutter User Guide
 
-_**IMPORTANT**_ The Mati for Flutter may change significantly as it undergoes testing.
-
-The Mati Flutter usage guide can be found in the following location:
-[Mati Flutter Usage Guide](docs/mati-flutter.md)
+The Metamap Flutter usage guide can be found in the following location:
+[Metamap Flutter Usage Guide](docs/metamap-flutter.md)

@@ -1,18 +1,16 @@
 ---
 title: "Flutter"
-excerpt: "Add the Mati button to your Flutter app."
+excerpt: "Add the Metamap button to your Flutter app."
 slug: "mobile-sdks"
 category: 61141a8437375100442f3d20
 ---
 
-# Mati for Flutter Usage Guide &mdash; BETA
+# Metamap for Flutter Usage Guide 
 
-
-_**IMPORTANT**_ Mati for Flutter may change significantly as it undergoes testing.
 
 ## Flutter Demo App
 
-You can go to GitHub to download the [Mati Flutter demo app](https://github.com/GetMati/mati-mobile-examples/tree/main/flutterDemoApp).
+You can go to GitHub to download the [Metamap Flutter demo app](https://github.com/GetMati/mati-mobile-examples/tree/main/flutterDemoApp).
 
 ## Dependencies
 
@@ -23,9 +21,9 @@ Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
   mati_plugin_flutter: 3.3.1
 ```
 
-## Install Mati for Flutter
+## Install Metamap for Flutter
 
-Install the Mati Flutter plugin for:
+Install the Metamap Flutter plugin for:
 * [Android](#android)
 * [iOS](#ios)
 
@@ -48,9 +46,9 @@ Add the following to `info.plist`:
   <string>Mati verification SDK requires access to media library</string>
 ```
 
-## Implement Mati in Your App
+## Implement Metamap in Your App
 
-To start the Mati verification flow, call the following when the user taps on the Mati button:
+To start the Metamap verification flow, call the following when the user taps on the Metamap button:
 
 ```java
   MatiFlutter.showMatiFlow(CLIENT_ID, FLOW_ID, METADATA)
@@ -68,7 +66,7 @@ MatiFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
 
 ### Example Application
 
-The following is an example application (MyApp) with the Mati verification flow:
+The following is an example application (MyApp) with the Metamap verification flow:
 
 ```c++
 import 'package:flutter/material.dart';
