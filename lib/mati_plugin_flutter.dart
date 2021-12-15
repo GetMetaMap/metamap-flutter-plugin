@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/services.dart';
 
 class MatiFlutter {
@@ -25,7 +24,11 @@ class MatiFlutter {
           resultCompleter.complete(ResultCancelled());
           return null;
       case "success":
-          resultCompleter.complete(ResultSuccess(call.arguments as String));
+          String text = call.arguments;
+          List<String> result = text.split(' ');
+          String verificationId = result[0];
+          String identityId = result[1];
+          resultCompleter.complete(ResultSuccess(verificationId, identityId));
           return null;
       default:
         throw MissingPluginException('notImplemented');
@@ -39,7 +42,8 @@ abstract class Result {
 
 class ResultSuccess extends Result {
   final String verificationId;
-  ResultSuccess(this.verificationId);
+  final String identittyId;
+  ResultSuccess(this.verificationId, this.identittyId);
 }
 
 class ResultCancelled extends Result {

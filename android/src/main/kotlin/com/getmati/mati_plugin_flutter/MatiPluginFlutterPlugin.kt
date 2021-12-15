@@ -29,7 +29,8 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
     binding.addActivityResultListener { requestCode, resultCode, data ->
       if (requestCode == MatiSdk.REQUEST_CODE) {
         if (resultCode == Activity.RESULT_OK) {
-          channel.invokeMethod("success", data.getStringExtra("ARG_VERIFICATION_ID"))
+          val result = data.getStringExtra("ARG_VERIFICATION_ID") +" "+ data.getStringExtra("ARG_IDENTITY_ID")
+          channel.invokeMethod("success", result)
         } else {
           channel.invokeMethod("cancelled", null)
         }

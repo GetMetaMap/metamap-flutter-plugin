@@ -35,9 +35,9 @@ public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonRe
         }
     }
     
-    public func verificationSuccess(identityId: String) {
-        self.channel.invokeMethod("success", arguments: identityId)
-    }
+     public func verificationSuccess(verificationID: String?, identityId: String?) {
+          self.channel.invokeMethod("success", arguments: (verificationID ?? "") + " " + (identityId ?? ""))
+       }
     
     public func verificationCancelled() {
         self.channel.invokeMethod("cancelled", arguments: nil)
