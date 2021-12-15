@@ -35,7 +35,7 @@ public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonRe
         }
     }
     
-     public func verificationSuccess(verificationID: String?, identityId: String?) {
+     public func verificationSuccess(identityId: String?, verificationID: String?) {
           self.channel.invokeMethod("success", arguments: (verificationID ?? "") + " " + (identityId ?? ""))
        }
     
