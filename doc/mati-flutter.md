@@ -1,9 +1,8 @@
 ---
 title: "Flutter"
-excerpt: "Add the Mati button to your Flutter app."
+excerpt: "Add the MetaMap button to your Flutter app."
 slug: "flutter-sdk"
-category: 61141a8437375100442f3d20
-hidden: true
+category: 61ae8e8dba577a0010791480
 ---
 
 # Mati for Flutter Usage Guide
