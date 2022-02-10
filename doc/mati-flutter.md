@@ -18,7 +18,7 @@ You can go to GitHub to download the [Mati Flutter demo app](https://github.com/
 Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
 
 ```yaml
-  mati_plugin_flutter: 3.3.1
+  mati_plugin_flutter: 2.4.12
 ```
 
 ## Install Mati for Flutter
