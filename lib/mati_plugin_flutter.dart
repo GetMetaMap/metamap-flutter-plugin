@@ -6,7 +6,7 @@ class MatiFlutter {
 
   static const MethodChannel _channel = const MethodChannel('mati_flutter');
 
-  static Future<String> showMatiFlow(String clientId, String flowId, Map<String, dynamic> metadata) async {
+  static Future<String> showMetaMapFlow(String clientId, String flowId, Map<String, dynamic> metadata) async {
   _channel.setMethodCallHandler(handler);
   resultCompleter = Completer<Result>();
   metadata["sdkType"] = "flutter";
