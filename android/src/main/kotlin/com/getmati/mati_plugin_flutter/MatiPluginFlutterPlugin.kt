@@ -25,21 +25,21 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
     channel.setMethodCallHandler(this)
   }
 
-//  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-//    binding.addActivityResultListener { requestCode, resultCode, data ->
-//      if (requestCode == MatiSdk.REQUEST_CODE) {
-//        if (resultCode == Activity.RESULT_OK) {
-//          val result = data.getStringExtra("ARG_VERIFICATION_ID") +" "+ data.getStringExtra("ARG_IDENTITY_ID")
-//          channel.invokeMethod("success", result)
-//        } else {
-//          channel.invokeMethod("cancelled", null)
-//        }
-//        true
-//      }
-//      false
-//    }
-//    activity = binding.activity
-//  }
+  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+    binding.addActivityResultListener { requestCode, resultCode, data ->
+      if (requestCode == MetamapSdk.REQUEST_CODE) {
+        if (resultCode == Activity.RESULT_OK) {
+          val result = data.getStringExtra("ARG_VERIFICATION_ID") +" "+ data.getStringExtra("ARG_IDENTITY_ID")
+          channel.invokeMethod("success", result)
+        } else {
+          channel.invokeMethod("cancelled", null)
+        }
+        true
+      }
+      false
+    }
+    activity = binding.activity
+  }
 
   override fun onDetachedFromActivityForConfigChanges() {
     activity = null
@@ -57,45 +57,6 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
   private var flowId: String? = null
   private var metadata: Map<String, Any>? = null
 
-  private val activityResultLauncher =
-          registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            val data = result.data
-//            if (data == null) {
-//              Toast.makeText(requireContext(), "Verification cancelled", Toast.LENGTH_SHORT)
-//                      .show()
-//              return@registerForActivityResult
-//            }
-
-              if (result.resultCode == Activity.RESULT_OK) {
-                val result = data.getStringExtra("ARG_VERIFICATION_ID") +" "+ data.getStringExtra("ARG_IDENTITY_ID")
-                channel.invokeMethod("success", result)
-              } else {
-                channel.invokeMethod("cancelled", null)
-              }
-
-
-
-
-//            if (result.resultCode == Activity.RESULT_OK) {
-//              // There are no request codes
-//              Toast.makeText(
-//                      requireContext(),
-//                      "Verification success! " +
-//                              "VerificationId: ${data.getStringExtra(MetamapSdk.ARG_VERIFICATION_ID)}, " +
-//                              "IdentityId: ${data.getStringExtra(MetamapSdk.ARG_IDENTITY_ID)}",
-//                      Toast.LENGTH_SHORT
-//              ).show()
-//            } else {
-//              Toast.makeText(
-//                      requireContext(),
-//                      "Verification cancelled! " +
-//                              "VerificationId: ${data.getStringExtra(MetamapSdk.ARG_VERIFICATION_ID)}, " +
-//                              "IdentityId: ${data.getStringExtra(MetamapSdk.ARG_IDENTITY_ID)}",
-//                      Toast.LENGTH_SHORT
-//              ).show()
-//            }
-          }
-
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
       "showMatiFlow" -> {
@@ -104,8 +65,7 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
         metadata = call.argument("metadata")
 
         activity?.let { activity ->
-          MetamapSdk.startFlow(activityResultLauncher,
-                  activity,
+            MetamapSdk.startFlow(activity,
                         clientId,
                         flowId,
             Metadata.Builder().apply {
