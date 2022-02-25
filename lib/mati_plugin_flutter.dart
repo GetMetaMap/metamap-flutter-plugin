@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 
-class MatiFlutter {
+class MetaMapFlutter {
   static var resultCompleter;
 
   static const MethodChannel _channel = const MethodChannel('mati_flutter');

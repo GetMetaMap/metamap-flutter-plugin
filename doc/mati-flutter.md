@@ -5,12 +5,12 @@ slug: "flutter-sdk"
 category: 61ae8e8dba577a0010791480
 ---
 
-# Mati for Flutter Usage Guide
+# Metamap for Flutter Usage Guide
 
 
 ## Flutter Demo App
 
-You can go to GitHub to download the [Mati Flutter demo app](https://github.com/GetMati/mati-mobile-examples/tree/main/flutterDemoApp).
+You can go to GitHub to download the [MetaMap Flutter demo app](https://github.com/GetMati/mati-mobile-examples/tree/main/flutterDemoApp).
 
 ## Dependencies
 
@@ -18,12 +18,12 @@ You can go to GitHub to download the [Mati Flutter demo app](https://github.com/
 Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
 
 ```yaml
-  mati_plugin_flutter: 2.4.12
+  mati_plugin_flutter: 2.4.20
 ```
 
-## Install Mati for Flutter
+## Install MetaMap for Flutter
 
-Install the Mati Flutter plugin for:
+Install the MetaMap Flutter plugin for:
 * [Android](#android)
 * [iOS](#ios)
 
@@ -39,28 +39,28 @@ Add the following to `info.plist`:
 
 ```xml
   <key>NSCameraUsageDescription</key>
-  <string>Mati verification SDK requires camera use</string>
+  <string>MetaMap verification SDK requires camera use</string>
 
   <key>NSMicrophoneUsageDescription</key>
-  <string>Mati verification SDK requires microphone use</string>
+  <string>MetaMap verification SDK requires microphone use</string>
 
   <key>NSPhotoLibraryUsageDescription</key>
-  <string>Mati verification SDK requires access to media library</string>
+  <string>MetaMap verification SDK requires access to media library</string>
 ```
 
-## Implement Mati in Your App
+## Implement MetaMap in Your App
 
-To start the Mati verification flow, call the following when the user taps on the Mati button:
+To start the MetaMap verification flow, call the following when the user taps on the MetaMap button:
 
 ```java
-  MatiFlutter.showMatiFlow(CLIENT_ID, FLOW_ID, METADATA)
+  MetaMapFlutter.showMetaMapFlow(CLIENT_ID, FLOW_ID, METADATA)
 ```
 
 
-The verification results will arrive in `MatiFlutter.resultCompleter.future` in a reply similar to the following:
+The verification results will arrive in `MetaMapFlutter.resultCompleter.future` in a reply similar to the following:
 
 ```c++
-MatiFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
+MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
       msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM));
@@ -68,7 +68,7 @@ MatiFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
 
 ### Example Application
 
-The following is an example application (MyApp) with the Mati verification flow:
+The following is an example application (MyApp) with the MetaMap verification flow:
 
 ```c++
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mati flutter plugin demo',
+      title: 'MetaMap flutter plugin demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -101,9 +101,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  void showMatiFlow() {
-    MatiFlutter.showMatiFlow("CLIENT_ID", "FLOW_ID", {});
-    MatiFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
+  void showMetaMapFlow() {
+    MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", {});
+    MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
         msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM));
@@ -113,11 +113,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mati flutter plugin demo"),
+        title: Text("MetaMap flutter plugin demo"),
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: showMatiFlow,
+          onPressed: showMetaMapFlow,
           child: const Text('Verify me'),
         )
       )
