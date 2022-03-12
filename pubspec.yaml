@@ -1,7 +1,7 @@
 name: mati_plugin_flutter
 description: Flutter plugin for Mati SDK.
 
-version: 2.4.21
+version: 2.4.22
 homepage: 'https://github.com/GetMati/mati-flutter-plugin'
 
 environment:
@@ -26,6 +26,6 @@ flutter:
     platforms:
       android:
         package: com.getmati.mati_plugin_flutter
-        pluginClass: MatiPluginFlutterPlugin
+        pluginClass: MetaMapPluginFlutterPlugin
       ios:
-        pluginClass: MatiPluginFlutterPlugin
+        pluginClass: MetaMapPluginFlutterPlugin
