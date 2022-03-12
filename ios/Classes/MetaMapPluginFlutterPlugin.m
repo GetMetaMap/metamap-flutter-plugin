@@ -10,6 +10,6 @@
 
 @implementation MatiPluginFlutterPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftMatiPluginFlutterPlugin registerWithRegistrar:registrar];
+  [SwiftMetaMapPluginFlutterPlugin registerWithRegistrar:registrar];
 }
 @end

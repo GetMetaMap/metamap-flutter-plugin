@@ -1,8 +1,8 @@
 import Flutter
 import UIKit
-import MatiSDK
+import MetaMapSDK
 
-public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonResultDelegate {
+public class SwiftMetaMapPluginFlutterPlugin: NSObject, FlutterPlugin, MetaMapButtonResultDelegate {
   
     let channel: FlutterMethodChannel
     
@@ -12,7 +12,7 @@ public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonRe
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "mati_flutter", binaryMessenger: registrar.messenger())
-        let instance = SwiftMatiPluginFlutterPlugin(channel)
+        let instance = SwiftMetaMapPluginFlutterPlugin(channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     
@@ -23,11 +23,11 @@ public class SwiftMatiPluginFlutterPlugin: NSObject, FlutterPlugin, MatiButtonRe
             let flowId = arguments["flowId"] as? String
             let metadata = arguments["metadata"] as? [String : Any]
             
-            Mati.shared.showMatiFlow(clientId: clientId,
+            MetaMap.shared.showMetaMapFlow(clientId: clientId,
                                     flowId: flowId,
                                     metadata: metadata)
 
-            MatiButtonResult.shared.delegate = self
+            MetaMapButtonResult.shared.delegate = self
 
             result("startVerification: " + UIDevice.current.systemVersion)
         } else {
