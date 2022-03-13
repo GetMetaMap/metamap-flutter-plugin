@@ -18,7 +18,7 @@ You can go to GitHub to download the [MetaMap Flutter demo app](https://github.c
 Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
 
 ```yaml
-  mati_plugin_flutter: 2.4.20
+  mati_plugin_flutter: 2.5.0
 ```
 
 ## Install MetaMap for Flutter
