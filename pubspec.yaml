@@ -26,6 +26,6 @@ flutter:
     platforms:
       android:
         package: com.getmati.mati_plugin_flutter
-        pluginClass: MetaMapPluginFlutterPlugin
+        pluginClass: MatiPluginFlutterPlugin
       ios:
         pluginClass: MetaMapPluginFlutterPlugin
