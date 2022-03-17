@@ -26,8 +26,8 @@ class MetaMapFlutter {
       case "success":
           String text = call.arguments;
           List<String> result = text.split(' ');
-          String verificationId = result[1];
-          String identityId = result[0];
+          String verificationId = result[0];
+          String identityId = result[1];
           resultCompleter.complete(ResultSuccess(verificationId, identityId));
           return null;
       default:
