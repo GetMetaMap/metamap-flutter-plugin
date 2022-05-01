@@ -64,7 +64,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   void showMetaMapFlow() {
-    MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", {});
+    final metaData = {"key": "value"};
+    MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", metaData);
     MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
         msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
         toastLength: Toast.LENGTH_SHORT,
@@ -86,4 +87,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+```
+
+## Metadata Usage
+
+Metadata is an additional optional parameter that you can receive using a webhook after passing verification:
+
+Set the Language:
+```bash
+metaData: {"fixedLanguage": "es"}
+```
+
+Set the Button Color:
+```bash
+yourMetadata: {"buttonColor": "hexColor"}
+```
+
+Set the Title color of the button:
+```bash
+yourMetadata: {"buttonTextColor": "hexColor"}
 ```
