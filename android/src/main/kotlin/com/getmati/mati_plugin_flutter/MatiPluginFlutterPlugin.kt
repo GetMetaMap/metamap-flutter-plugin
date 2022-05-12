@@ -29,7 +29,7 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
     binding.addActivityResultListener { requestCode, resultCode, data ->
       if (requestCode == MetamapSdk.DEFAULT_REQUEST_CODE) {
         if (resultCode == Activity.RESULT_OK) {
-          val result = data.getStringExtra("ARG_VERIFICATION_ID") +" "+ data.getStringExtra("ARG_IDENTITY_ID")
+          val result = data?.getStringExtra("ARG_VERIFICATION_ID") +" "+ data?.getStringExtra("ARG_IDENTITY_ID")
           channel.invokeMethod("success", result)
         } else {
           channel.invokeMethod("cancelled", null)
