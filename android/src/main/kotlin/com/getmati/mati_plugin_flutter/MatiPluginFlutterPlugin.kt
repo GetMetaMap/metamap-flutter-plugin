@@ -28,8 +28,9 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     binding.addActivityResultListener { requestCode, resultCode, data ->
       if (requestCode == MetamapSdk.DEFAULT_REQUEST_CODE) {
-        if (resultCode == Activity.RESULT_OK) {
-          val result = data.getStringExtra("ARG_VERIFICATION_ID") +" "+ data.getStringExtra("ARG_IDENTITY_ID")
+        val intent = data
+        if (resultCode == Activity.RESULT_OK && intent != null) {
+          val result = intent.getStringExtra("ARG_VERIFICATION_ID") +" "+ intent.getStringExtra("ARG_IDENTITY_ID")
           channel.invokeMethod("success", result)
         } else {
           channel.invokeMethod("cancelled", null)
