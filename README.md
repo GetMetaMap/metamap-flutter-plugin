@@ -25,6 +25,15 @@ Add the following to `info.plist`:
 
   <key>NSPhotoLibraryUsageDescription</key>
   <string>MetaMap verification SDK requires access to media library</string>
+
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>MetaMap will use your location information to provide best possible verification experience.</string>
+  
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>MetaMap will use your location information to provide best possible verification experience.</string>
+  
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>MetaMap will use your location information to provide best possible verification experience.</string>
 ```
 
 ## Implement MetaMap in Your App
