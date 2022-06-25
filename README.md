@@ -1,3 +1,10 @@
+---
+title: "Flutter Changelog"
+excerpt: "MetaMap's Flutter SDK Changelog"
+slug: "flutter-changelog"
+category: 61ae8e8dba577a0010791480
+hidden: true
+---
 
 ## Install MetaMap for Flutter
 
@@ -100,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ## Metadata Usage
 
-Metadata is an additional optional parameter that you can receive using a webhook after passing verification:
+Metadata is an additional optional parameters:
 
 Set the Language:
 ```bash
@@ -116,3 +123,8 @@ Set the Title color of the button:
 ```bash
 yourMetadata: {"buttonTextColor": "hexColor"}
 ```
+
+Set identity Id as parameter for re-verification:
+```bash
+yourMetadata: ["identityId": "value"]
+   ```

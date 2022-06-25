@@ -1,25 +1,17 @@
-z
-# Metamap for Flutter Usage Guide
-
-
-## Flutter Demo App
-
-You can go to GitHub to download the [MetaMap Flutter demo app](https://github.com/GetMati/mati-mobile-examples/tree/main/flutterDemoApp).
-
-## Dependencies
-
-
-Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
-
-```yaml
-  mati_plugin_flutter: 2.5.0
-```
+---
+title: "Flutter Changelog"
+excerpt: "MetaMap's Flutter SDK Changelog"
+slug: "flutter-changelog"
+category: 61ae8e8dba577a0010791480
+hidden: true
+---
 
 ## Install MetaMap for Flutter
 
-Install the MetaMap Flutter plugin for:
-* [Android](#android)
-* [iOS](#ios)
+1. Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
+```bash
+  mati_plugin_flutter: any
+```
 
 ### Android
 
@@ -31,7 +23,7 @@ For iOS Minimum iOS version should be 12+
 
 Add the following to `info.plist`:
 
-```xml
+```bash
   <key>NSCameraUsageDescription</key>
   <string>MetaMap verification SDK requires camera use</string>
 
@@ -40,31 +32,23 @@ Add the following to `info.plist`:
 
   <key>NSPhotoLibraryUsageDescription</key>
   <string>MetaMap verification SDK requires access to media library</string>
+
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>MetaMap will use your location information to provide best possible verification experience.</string>
+  
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>MetaMap will use your location information to provide best possible verification experience.</string>
+  
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>MetaMap will use your location information to provide best possible verification experience.</string>
 ```
 
 ## Implement MetaMap in Your App
 
-To start the MetaMap verification flow, call the following when the user taps on the MetaMap button:
+2. The following is an example application (MyApp) with the MetaMap verification flow:
+   The following is an example application (MyApp) with the MetaMap verification flow:
 
-```java
-  MetaMapFlutter.showMetaMapFlow(CLIENT_ID, FLOW_ID, METADATA)
-```
-
-
-The verification results will arrive in `MetaMapFlutter.resultCompleter.future` in a reply similar to the following:
-
-```c++
-MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
-      msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM));
-```
-
-### Example Application
-
-The following is an example application (MyApp) with the MetaMap verification flow:
-
-```c++
+```bash
 import 'package:flutter/material.dart';
 import 'package:mati_plugin_flutter/mati_plugin_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -96,7 +80,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   void showMetaMapFlow() {
-    MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", {});
+    final metaData = {"key": "value"};
+    MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", metaData);
     MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
         msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
         toastLength: Toast.LENGTH_SHORT,
@@ -119,3 +104,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 ```
+
+## Metadata Usage
+
+Metadata is an additional optional parameters:
+
+Set the Language:
+```bash
+metaData: {"fixedLanguage": "es"}
+```
+
+Set the Button Color:
+```bash
+yourMetadata: {"buttonColor": "hexColor"}
+```
+
+Set the Title color of the button:
+```bash
+yourMetadata: {"buttonTextColor": "hexColor"}
+```
+
+Set identity Id as parameter for re-verification:
+```bash
+yourMetadata: ["identityId": "value"]
+   ```
