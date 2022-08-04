@@ -35,7 +35,5 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation ('com.metamap:android-sdk:3.22.4'){
-        exclude group: 'org.json', module: 'json'
-    }
+    implementation ('com.metamap:android-sdk:3.22.5')
 }
