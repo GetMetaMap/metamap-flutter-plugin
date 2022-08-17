@@ -10,7 +10,7 @@ hidden: true
 
 1. Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
 ```bash
-  mati_plugin_flutter: ^2.6.7
+  mati_plugin_flutter: ^2.7.0
 ```
 
 ### Android
@@ -128,3 +128,9 @@ Set identity Id as parameter for re-verification:
 ```bash
 yourMetadata: ["identityId": "value"]
    ```
+
+## Some error codes you may get during integration
+
+`402` - MetaMap services are not paid: please contact your customer success manager
+
+`403` - MetaMap credentials issues: please check your client id and MetaMap id
