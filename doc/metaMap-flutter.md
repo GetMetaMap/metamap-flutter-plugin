@@ -10,7 +10,7 @@ hidden: true
 
 1. Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
 ```bash
-  mati_plugin_flutter: any
+  mati_plugin_flutter: 2.8.0
 ```
 
 ### Android
