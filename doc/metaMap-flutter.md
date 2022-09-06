@@ -6,104 +6,110 @@ category: 61ae8e8dba577a0010791480
 hidden: true
 ---
 
-## Install MetaMap for Flutter
+## Version
+This plugin uses the latest versions of the MetaMap iOS and Android SDKs. For more information on the latest native SDK versions, go to:
+* [Android](https://docs.getmati.com/docs/android-changelog)
+* [iOS](https://docs.getati.com/docs/ios-changelog)
 
-1. Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
-```bash
-  mati_plugin_flutter: 2.8.0
-```
+For changes to the plugin, go to the [changelog page](https://docs.getmati.com/docs/flutter-changelog)
 
-### Android
+# Install MetaMap for Flutter
 
-For Android check that the `minSdkVersion` in `<YOUR_APP>/build.gradle` is &#8805;21
+   ## 1. Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
+   ```bash
+   mati_plugin_flutter: 2.8.0
+   ```
 
-### iOS
+   ### Android
 
-For iOS Minimum iOS version should be 12+
+   For Android check that the `minSdkVersion` in `<YOUR_APP>/build.gradle` is &#8805;21
 
-Add the following to `info.plist`:
+   ### iOS
 
-```bash
-  <key>NSCameraUsageDescription</key>
-  <string>MetaMap verification SDK requires camera use</string>
+   For iOS Minimum iOS version should be 12+
 
-  <key>NSMicrophoneUsageDescription</key>
-  <string>MetaMap verification SDK requires microphone use</string>
+   Add the following to `info.plist`:
 
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>MetaMap verification SDK requires access to media library</string>
+   ```xml
+   <key>NSCameraUsageDescription</key>
+   <string>MetaMap verification SDK requires camera use</string>
 
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>MetaMap will use your location information to provide best possible verification experience.</string>
+   <key>NSMicrophoneUsageDescription</key>
+   <string>MetaMap verification SDK requires microphone use</string>
+
+   <key>NSPhotoLibraryUsageDescription</key>
+   <string>MetaMap verification SDK requires access to media library</string>
+
+   <key>NSLocationWhenInUseUsageDescription</key>
+   <string>MetaMap will use your location information to provide best possible verification experience.</string>
   
-  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>MetaMap will use your location information to provide best possible verification experience.</string>
+   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+   <string>MetaMap will use your location information to provide best possible verification experience.</string>
   
-  <key>NSLocationAlwaysUsageDescription</key>
-  <string>MetaMap will use your location information to provide best possible verification experience.</string>
-```
+   <key>NSLocationAlwaysUsageDescription</key>
+   <string>MetaMap will use your location information to provide best possible verification experience.</string>
+   ```
 
-## Implement MetaMap in Your App
+   ## 2. Implement MetaMap in Your App
 
-2. The following is an example application (MyApp) with the MetaMap verification flow:
-   The following is an example application (MyApp) with the MetaMap verification flow:
+  The following is an example application (MyApp) with the MetaMap verification flow:
 
-```bash
-import 'package:flutter/material.dart';
-import 'package:mati_plugin_flutter/mati_plugin_flutter.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+  ```javascript
+  import 'package:flutter/material.dart';
+  import 'package:mati_plugin_flutter/mati_plugin_flutter.dart';
+  import 'package:fluttertoast/fluttertoast.dart';
 
-void main() {
-  runApp(MyApp());
-}
+  void main() {
+    runApp(MyApp());
+  }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+   class MyApp extends StatelessWidget {
+     @override
+     Widget build(BuildContext context) {
+       return MaterialApp(
       title: 'MetaMap flutter plugin demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
+         theme: ThemeData(
+           primarySwatch: Colors.blue,
+         ),
+         home: MyHomePage(),
+       );
+     }
+   }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+   class MyHomePage extends StatefulWidget {
+     MyHomePage({Key? key}) : super(key: key);
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+     @override
+     _MyHomePageState createState() => _MyHomePageState();
+   }
 
-class _MyHomePageState extends State<MyHomePage> {
+   class _MyHomePageState extends State<MyHomePage> {
 
-  void showMetaMapFlow() {
-    final metaData = {"key": "value"};
-    MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", metaData);
-    MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
-        msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM));
-  }
+     void showMetaMapFlow() {
+       final metaData = {"key": "value"};
+       MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", metaData);
+       MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
+           msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
+           toastLength: Toast.LENGTH_SHORT,
+           gravity: ToastGravity.BOTTOM));
+     }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("MetaMap flutter plugin demo"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: showMetaMapFlow,
-          child: const Text('Verify me'),
-        )
-      )
-    );
-  }
-}
-```
+     @override
+     Widget build(BuildContext context) {
+       return Scaffold(
+         appBar: AppBar(
+           title: Text("MetaMap flutter plugin demo"),
+         ),
+         body: Center(
+           child: ElevatedButton(
+             onPressed: showMetaMapFlow,
+             child: const Text('Verify me'),
+           )
+         )
+       );
+     }
+   }
+   ```
 
 ## Metadata Usage
 
@@ -127,4 +133,4 @@ yourMetadata: {"buttonTextColor": "hexColor"}
 Set identity Id as parameter for re-verification:
 ```bash
 yourMetadata: ["identityId": "value"]
-   ```
+```
