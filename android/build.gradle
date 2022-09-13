@@ -1,4 +1,4 @@
-group 'com.getmati.mati_plugin_flutter'
+group 'com.getmati.metamap_plugin_flutter'
 version '1.0.1'
 
 buildscript {

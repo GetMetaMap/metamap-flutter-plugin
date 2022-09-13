@@ -8,9 +8,9 @@ hidden: true
 
 ## Install MetaMap for Flutter
 
-1. Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
+1. Add `metamap_plugin_flutter` dependency to your `pubspec.yaml` file:
 ```bash
-  mati_plugin_flutter: ^2.9.0
+  metamap_plugin_flutter: ^3.0.0
 ```
 
 ### Android
@@ -50,7 +50,7 @@ Add the following to `info.plist`:
 
 ```bash
 import 'package:flutter/material.dart';
-import 'package:mati_plugin_flutter/mati_plugin_flutter.dart';
+import 'package:metamap_plugin_flutter/mmetamap_plugin_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {

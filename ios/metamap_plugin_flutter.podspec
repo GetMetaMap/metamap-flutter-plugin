@@ -1,9 +1,9 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint mati_plugin_flutter.podspec` to validate before publishing.
+# Run `pod lib lint metamap_plugin_flutter.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'mati_plugin_flutter'
+  s.name             = 'metamap_plugin_flutter'
   s.version          = '2.2.2'
   s.summary          = 'Flutter plugin for Mati SDK'
   s.description      = <<-DESC
