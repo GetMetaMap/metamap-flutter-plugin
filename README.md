@@ -50,7 +50,7 @@ Add the following to `info.plist`:
 
 ```bash
 import 'package:flutter/material.dart';
-import 'package:metamap_plugin_flutter/mmetamap_plugin_flutter.dart';
+import 'package:metamap_plugin_flutter/metamap_plugin_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
