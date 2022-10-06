@@ -10,7 +10,7 @@ hidden: true
 
 1. Add `metamap_plugin_flutter` dependency to your `pubspec.yaml` file:
 ```bash
-  metamap_plugin_flutter: ^3.0.0
+  metamap_plugin_flutter: ^3.1.0
 ```
 
 ### Android
