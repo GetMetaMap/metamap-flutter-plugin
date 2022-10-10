@@ -1,9 +1,8 @@
 ---
-title: "Flutter Changelog"
-excerpt: "MetaMap's Flutter SDK Changelog"
-slug: "flutter-changelog"
+title: "Flutter"
+excerpt: "MetaMap's Flutter SDK"
+slug: "flutter-sdk"
 category: 61ae8e8dba577a0010791480
-hidden: true
 ---
 
 ## Install MetaMap for Flutter
