@@ -1,15 +1,21 @@
 ---
-title: "Flutter"
-excerpt: "MetaMap's Flutter SDK"
-slug: "flutter-sdk"
+title: "Flutter Changelog"
+excerpt: "MetaMap's Flutter SDK Changelog"
+slug: "flutter-changelog"
 category: 61ae8e8dba577a0010791480
+hidden: true
 ---
+
+| LTS version (Recommended for most users): | Current Version(Latest features) |
+|-------------------------------------------|----------------------------------|
+| 3.1.0                                     | 3.1.2                            |
+
 
 ## Install MetaMap for Flutter
 
-1. Add `mati_plugin_flutter` dependency to your `pubspec.yaml` file:
+1. Add `metamap_plugin_flutter` dependency to your `pubspec.yaml` file:
 ```bash
-  metamap_plugin_flutter: 2.9.1
+  metamap_plugin_flutter: ^3.1.2
 ```
 
 ### Android
@@ -127,3 +133,9 @@ Set identity Id as parameter for re-verification:
 ```bash
 yourMetadata: ["identityId": "value"]
    ```
+
+## Some error codes you may get during integration
+
+`402` - MetaMap services are not paid: please contact your customer success manager
+
+`403` - MetaMap credentials issues: please check your client id and MetaMap id
