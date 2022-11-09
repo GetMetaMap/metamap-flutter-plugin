@@ -8,14 +8,14 @@ hidden: true
 
 | LTS version (Recommended for most users): | Current Version(Latest features) |
 |-------------------------------------------|----------------------------------|
-| 3.2.0                                       | 3.2.0                            |
+| 3.2.1                                     | 3.2.0                            |
 
 
 ## Install MetaMap for Flutter
 
 1. Add `metamap_plugin_flutter` dependency to your `pubspec.yaml` file:
 ```bash
-  metamap_plugin_flutter: ^3.2.0
+  metamap_plugin_flutter: ^3.2.1
 ```
 
 ### Android
