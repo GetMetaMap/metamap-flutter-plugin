@@ -8,23 +8,24 @@ hidden: true
 
 | LTS version (Recommended for most users): | Current Version(Latest features) |
 |-------------------------------------------|----------------------------------|
-| 3.1.0                                     | 3.1.2                            |
+| 3.2.0                                       | 3.2.0                            |
+
 
 
 ## Install MetaMap for Flutter
 
-1. Add `metamap_plugin_flutter` dependency to your `pubspec.yaml` file:
+Add `metamap_plugin_flutter` dependency to your `pubspec.yaml` file where `<version_number>` is either the LTS or the latest version of the plugin:
 ```bash
-  metamap_plugin_flutter: ^3.1.2
+  metamap_plugin_flutter: ^<version_number>
 ```
 
 ### Android
 
-For Android check that the `minSdkVersion` in `<YOUR_APP>/build.gradle` is &#8805;21
+For Android, check that the `minSdkVersion` in `<YOUR_APP>/build.gradle` is &#8805;21
 
 ### iOS
 
-For iOS Minimum iOS version should be 12+
+MetaMap's Flutter plugin requires iOS version &gt;12
 
 Add the following to `info.plist`:
 
@@ -40,17 +41,16 @@ Add the following to `info.plist`:
 
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>MetaMap will use your location information to provide best possible verification experience.</string>
-  
+
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
   <string>MetaMap will use your location information to provide best possible verification experience.</string>
-  
+
   <key>NSLocationAlwaysUsageDescription</key>
   <string>MetaMap will use your location information to provide best possible verification experience.</string>
 ```
 
 ## Implement MetaMap in Your App
 
-2. The following is an example application (MyApp) with the MetaMap verification flow:
    The following is an example application (MyApp) with the MetaMap verification flow:
 
 ```bash
@@ -134,7 +134,7 @@ Set identity Id as parameter for re-verification:
 yourMetadata: ["identityId": "value"]
    ```
 
-## Some error codes you may get during integration
+## Some error codes you may see during integration
 
 `402` - MetaMap services are not paid: please contact your customer success manager
 
