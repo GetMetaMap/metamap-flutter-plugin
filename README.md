@@ -2,5 +2,5 @@
 
 The MetaMap for Flutter usage guide and changelog can be found in the following locations:
 
-[MetaMap for Flutter usage guide](https://github.com/GetMetaMap/metamap-flutter-plugin/blob/main/doc/metaMap-flutter.md)
-[MetaMap for Flutter changelog](https://github.com/GetMetaMap/metamap-flutter-plugin/blob/main/doc/metamap-flutter-version.md)
+* [MetaMap for Flutter usage guide](https://github.com/GetMetaMap/metamap-flutter-plugin/blob/main/doc/metaMap-flutter.md)
+* [MetaMap for Flutter changelog](https://github.com/GetMetaMap/metamap-flutter-plugin/blob/main/doc/metamap-flutter-version.md)
