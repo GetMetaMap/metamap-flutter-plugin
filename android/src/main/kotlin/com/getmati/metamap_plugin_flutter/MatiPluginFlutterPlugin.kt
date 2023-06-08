@@ -30,7 +30,8 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
       if (requestCode == MetamapSdk.DEFAULT_REQUEST_CODE) {
         val intent = data
         if (resultCode == Activity.RESULT_OK && intent != null) {
-          val result = intent.getStringExtra("ARG_VERIFICATION_ID") +" "+ intent.getStringExtra("ARG_IDENTITY_ID")
+          val result =
+            intent.getStringExtra("ARG_VERIFICATION_ID") + " " + intent.getStringExtra("ARG_IDENTITY_ID")
           channel.invokeMethod("success", result)
         } else {
           channel.invokeMethod("cancelled", null)
@@ -57,6 +58,8 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
   private var clientId: String = ""
   private var flowId: String? = null
   private var metadata: Map<String, Any>? = null
+  private var encryptionConfigurationId: String? = null
+  private var configurationId: String? = null
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
@@ -64,20 +67,29 @@ class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
         clientId = call.argument("clientId")!!
         flowId = call.argument("flowId")
         metadata = call.argument("metadata")
+        encryptionConfigurationId = call.argument("encryptionConfigurationId")
+        configurationId = call.argument("configurationId")
 
         activity?.let { activity ->
-            MetamapSdk.startFlow(activity,
-                        clientId,
-                        flowId,
-            Metadata.Builder().apply {
-              metadata?.entries?.forEach {
-                  this.with(it.key, if(it.key in arrayOf("buttonColor", "buttonTextColor")) {
-                      Color.parseColor(it.value as String)
-                  } else {
-                      it.value
-                  })
-              }
-            }.build()
+          val metadata = Metadata.Builder().apply {
+            metadata?.entries?.forEach {
+              this.with(
+                it.key, if (it.key in arrayOf("buttonColor", "buttonTextColor")) {
+                  Color.parseColor(it.value as String)
+                } else {
+                  it.value
+                }
+              )
+            }
+          }
+          MetamapSdk.startFlow(
+            activity,
+            clientId,
+            flowId,
+            metadata.build(),
+            2576,
+            configurationId,
+            encryptionConfigurationId
           )
           result.success("showMatiFlow ${android.os.Build.VERSION.RELEASE}")
         }
