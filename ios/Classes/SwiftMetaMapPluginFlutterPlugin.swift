@@ -22,9 +22,13 @@ public class SwiftMetaMapPluginFlutterPlugin: NSObject, FlutterPlugin, MetaMapBu
             let clientId = arguments["clientId"] as! String
             let flowId = arguments["flowId"] as? String
             let metadata = arguments["metadata"] as? [String : Any]
+            let configurationId = arguments["configurationId"] as? String
+            let encryptionConfigurationId = arguments["encryptionConfigurationId"] as? String
             
             MetaMap.shared.showMetaMapFlow(clientId: clientId,
                                     flowId: flowId,
+                                    configurationId: configurationId,
+                                    encryptionConfigurationId: configurationId,
                                     metadata: metadata)
 
             MetaMapButtonResult.shared.delegate = self
