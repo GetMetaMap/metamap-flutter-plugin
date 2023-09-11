@@ -1,14 +1,13 @@
 ---
-title: "Flutter Changelog"
-excerpt: "MetaMap's Flutter SDK Changelog"
-slug: "flutter-changelog"
+title: "Flutter SDK"
+excerpt: "MetaMap's Flutter SDK"
 category: 61ae8e8dba577a0010791480
 hidden: true
 ---
 
 | LTS version (Recommended for most users): | Current Version(Latest features) |
 |-------------------------------------------|----------------------------------|
-| 4.0.3                                     | 4.0.3                            |
+| 4.1.1                                     | 4.1.0                            |
 
 
 
@@ -112,26 +111,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ## Metadata Usage
 
-Metadata is an additional optional parameters:
+Metadata is an additional optional parameter that can be used to replace certain settings:
 
-Set the Language:
+# Set the Language:
+By default the SDK language is set to "en" but it is editable to the language from the list:
+"es", "fr", "pt", "ru", "tr", "de", "it", "pl", "th".
 ```bash
-metaData: {"fixedLanguage": "es"}
+metaData: {"fixedLanguage": "value"}
 ```
 
-Set the Button Color:
+# Set the Button Color:
+By default main button color is white but it is editable by using hex Color format "hexColor".
 ```bash
-yourMetadata: {"buttonColor": "hexColor"}
+metaData: {"buttonColor": "value"}
 ```
 
-Set the Title color of the button:
+# Set the Title color of the button:
+By default main button title color is black but it is editable by using hex Color format "hexColor".
 ```bash
-yourMetadata: {"buttonTextColor": "hexColor"}
+metaData: {"buttonTextColor": "value"}
 ```
 
-Set identity Id as parameter for re-verification:
+# Set identity Id as parameter for re-verification:
 ```bash
-yourMetadata: ["identityId": "value"]
+metaData: ["identityId": "value"]
+   ```
+
+# Set encryption Configuration Id as parameter for encrypting data.
+```bash
+metaData: ["encryptionConfigurationId": "value"]
    ```
 
 ## Some error codes you may see during integration
