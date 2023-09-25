@@ -7,7 +7,7 @@ hidden: true
 
 | LTS version (Recommended for most users): | Current Version(Latest features) |
 |-------------------------------------------|----------------------------------|
-| 4.1.1                                     | 4.1.0                            |
+| 4.1.2                                     | 4.1.2                            |
 
 
 
@@ -141,6 +141,11 @@ metaData: ["identityId": "value"]
 ```bash
 metaData: ["encryptionConfigurationId": "value"]
    ```
+
+### Set customization fonts as parameter.
+to add custom fonts, the project needs to have these font files, otherwise SDK will use default fonts: 
+```bash
+metadata: ["regularFont": "REGULAR_FONT_NAME.ttf", "boldFont":  "BOLD_FONT_NAME.ttf"]
 
 ## Some error codes you may see during integration
 
