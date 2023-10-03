@@ -29,7 +29,7 @@ public class SwiftMetaMapPluginFlutterPlugin: NSObject, FlutterPlugin, MetaMapBu
                                     flowId: flowId,
                                     configurationId: configurationId,
                                     encryptionConfigurationId: configurationId,
-                                    metadata: metadata,)
+                                    metadata: metadata)
 
             MetaMapButtonResult.shared.delegate = self
 
