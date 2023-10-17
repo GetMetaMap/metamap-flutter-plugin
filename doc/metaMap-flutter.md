@@ -7,7 +7,7 @@ hidden: true
 
 | LTS version (Recommended for most users): | Current Version(Latest features) |
 |-------------------------------------------|----------------------------------|
-| 4.1.4                                     | 4.1.4                            |
+| 4.1.5                                     | 4.1.5                            |
 
 
 
