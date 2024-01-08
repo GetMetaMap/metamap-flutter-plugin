@@ -24,6 +24,7 @@ public class SwiftMetaMapPluginFlutterPlugin: NSObject, FlutterPlugin, MetaMapBu
             let metadata = arguments["metadata"] as? [String : Any]
             let configurationId = arguments["configurationId"] as? String
             let encryptionConfigurationId = arguments["encryptionConfigurationId"] as? String
+
             
             MetaMap.shared.showMetaMapFlow(clientId: clientId,
                                     flowId: flowId,
