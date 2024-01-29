@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/services.dart';
 
 class MetaMapFlutter {
@@ -6,14 +7,21 @@ class MetaMapFlutter {
 
   static const MethodChannel _channel = const MethodChannel('mati_flutter');
 
-  static Future<String> showMetaMapFlow(String clientId, String flowId, Map<String, dynamic> metadata) async {
-  _channel.setMethodCallHandler(handler);
-  resultCompleter = Completer<Result>();
-  metadata["sdkType"] = "flutter";
+  static Future<String> showMetaMapFlow(
+      {required String clientId,
+      required String flowId,
+      String? configurationId,
+      String? encryptionConfigurationId,
+      Map<String, dynamic>? metadata}) async {
+    _channel.setMethodCallHandler(handler);
+    resultCompleter = Completer<Result>();
+    metadata?["sdkType"] = "flutter";
 
-  return await _channel.invokeMethod('showMatiFlow', <String, dynamic> {
+    return await _channel.invokeMethod('showMatiFlow', <String, dynamic>{
       'clientId': clientId,
       'flowId': flowId,
+      'configurationId': configurationId,
+      'encryptionConfigurationId': encryptionConfigurationId,
       'metadata': metadata,
     });
   }
@@ -21,24 +29,22 @@ class MetaMapFlutter {
   static Future<Result?> handler(MethodCall call) async {
     switch (call.method) {
       case "cancelled":
-          resultCompleter.complete(ResultCancelled());
-          return null;
+        resultCompleter.complete(ResultCancelled());
+        return null;
       case "success":
-          String text = call.arguments;
-          List<String> result = text.split(' ');
-          String verificationId = result[0];
-          String identityId = result[1];
-          resultCompleter.complete(ResultSuccess(verificationId, identityId));
-          return null;
+        String text = call.arguments;
+        List<String> result = text.split(' ');
+        String verificationId = result[0];
+        String identityId = result[1];
+        resultCompleter.complete(ResultSuccess(verificationId, identityId));
+        return null;
       default:
         throw MissingPluginException('notImplemented');
     }
   }
 }
 
-abstract class Result {
-
-}
+abstract class Result {}
 
 class ResultSuccess extends Result {
   final String verificationId;
@@ -46,6 +52,4 @@ class ResultSuccess extends Result {
   ResultSuccess(this.verificationId, this.identityId);
 }
 
-class ResultCancelled extends Result {
-
-}
+class ResultCancelled extends Result {}
