@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void showMetaMapFlow() {
     final metaData = {"key": "value"};
-    MetaMapFlutter.showMetaMapFlow("CLIENT_ID", "FLOW_ID", metaData);
+    MetaMapFlutter.showMetaMapFlow(clientId: "CLIENT_ID",flowId: "FLOW_ID", metaData: metaData);
     MetaMapFlutter.resultCompleter.future.then((result) => Fluttertoast.showToast(
         msg: result is ResultSuccess ? "Success ${result.verificationId}" : "Cancelled",
         toastLength: Toast.LENGTH_SHORT,
