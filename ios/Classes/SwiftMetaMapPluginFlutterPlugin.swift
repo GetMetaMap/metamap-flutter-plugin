@@ -43,7 +43,7 @@ public class SwiftMetaMapPluginFlutterPlugin: NSObject, FlutterPlugin, MetaMapBu
           self.channel.invokeMethod("success", arguments: (verificationID ?? "") + " " + (identityId ?? ""))
        }
     
-    public func verificationCancelled() {
-        self.channel.invokeMethod("cancelled", arguments: nil)
+    public func verificationCancelled(identityId: String?, verificationID: String?) {
+        self.channel.invokeMethod("cancelled",  arguments: (verificationID ?? "") + " " + (identityId ?? ""))
     }
 }

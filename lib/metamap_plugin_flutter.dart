@@ -29,7 +29,11 @@ class MetaMapFlutter {
   static Future<Result?> handler(MethodCall call) async {
     switch (call.method) {
       case "cancelled":
-        resultCompleter.complete(ResultCancelled());
+        String text = call.arguments;
+        List<String> result = text.split(' ');
+        String verificationId = result[0];
+        String identityId = result[1];
+        resultCompleter.complete(ResultCancelled(verificationId, identityId));
         return null;
       case "success":
         String text = call.arguments;
@@ -49,7 +53,13 @@ abstract class Result {}
 class ResultSuccess extends Result {
   final String verificationId;
   final String identityId;
+
   ResultSuccess(this.verificationId, this.identityId);
 }
 
-class ResultCancelled extends Result {}
+class ResultCancelled extends Result {
+  final String verificationId;
+  final String identityId;
+
+  ResultCancelled(this.verificationId, this.identityId);
+}
