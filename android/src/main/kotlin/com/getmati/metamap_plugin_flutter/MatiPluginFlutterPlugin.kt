@@ -16,89 +16,97 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
 class MatiPluginFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
-  private lateinit var channel: MethodChannel
+    private lateinit var channel: MethodChannel
 
-  private var activity: Activity? = null
+    private var activity: Activity? = null
 
-  override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "mati_flutter")
-    channel.setMethodCallHandler(this)
-  }
-
-  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-    binding.addActivityResultListener { requestCode, resultCode, data ->
-      if (requestCode == MetamapSdk.DEFAULT_REQUEST_CODE) {
-        val intent = data
-        if (resultCode == Activity.RESULT_OK && intent != null) {
-          val result =
-            intent.getStringExtra("ARG_VERIFICATION_ID") + " " + intent.getStringExtra("ARG_IDENTITY_ID")
-          channel.invokeMethod("success", result)
-        } else {
-          channel.invokeMethod("cancelled", null)
-        }
-        true
-      }
-      false
+    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "mati_flutter")
+        channel.setMethodCallHandler(this)
     }
-    activity = binding.activity
-  }
 
-  override fun onDetachedFromActivityForConfigChanges() {
-    activity = null
-  }
-
-  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    activity = binding.activity
-  }
-
-  override fun onDetachedFromActivity() {
-    activity = null
-  }
-
-  private var clientId: String = ""
-  private var flowId: String? = null
-  private var metadata: Map<String, Any>? = null
-  private var encryptionConfigurationId: String? = null
-  private var configurationId: String? = null
-
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    when (call.method) {
-      "showMatiFlow" -> {
-        clientId = call.argument("clientId")!!
-        flowId = call.argument("flowId")
-        metadata = call.argument("metadata")
-        encryptionConfigurationId = call.argument("encryptionConfigurationId")
-        configurationId = call.argument("configurationId")
-
-        activity?.let { activity ->
-          val metadata = Metadata.Builder().apply {
-            metadata?.entries?.forEach {
-              this.with(
-                it.key, if (it.key in arrayOf("buttonColor", "buttonTextColor")) {
-                  Color.parseColor(it.value as String)
+    override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+        binding.addActivityResultListener { requestCode, resultCode, data ->
+            if (requestCode == MetamapSdk.DEFAULT_REQUEST_CODE) {
+                val intent = data
+                if (resultCode == Activity.RESULT_OK && intent != null) {
+                    val result =
+                        intent.getStringExtra("ARG_VERIFICATION_ID") + " " + intent.getStringExtra("ARG_IDENTITY_ID")
+                    channel.invokeMethod("success", result)
                 } else {
-                  it.value
+                    channel.invokeMethod("cancelled", null)
                 }
-              )
+                true
             }
-          }
-          MetamapSdk.startFlow(
-            activity,
-            clientId,
-            flowId,
-            metadata.build(),
-            2576,
-            configurationId,
-            encryptionConfigurationId
-          )
-          result.success("showMatiFlow ${android.os.Build.VERSION.RELEASE}")
+            false
         }
-      }
-      else -> result.notImplemented()
+        activity = binding.activity
     }
-  }
 
-  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
-  }
+    override fun onDetachedFromActivityForConfigChanges() {
+        activity = null
+    }
+
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+        activity = binding.activity
+    }
+
+    override fun onDetachedFromActivity() {
+        activity = null
+    }
+
+    private var clientId: String = ""
+    private var flowId: String? = null
+    private var metadata: Map<String, Any>? = null
+    private var encryptionConfigurationId: String? = null
+    private var configurationId: String? = null
+
+    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+        when (call.method) {
+            "showMatiFlow" -> {
+                clientId = call.argument("clientId")!!
+                flowId = call.argument("flowId")
+                metadata = call.argument("metadata")
+                encryptionConfigurationId = call.argument("encryptionConfigurationId")
+                configurationId = call.argument("configurationId")
+
+                activity?.let { activity ->
+                    val metadataBuilder = Metadata.Builder().apply {
+                        metadata?.entries?.forEach {
+                            this.with(
+                                it.key, if (it.key in arrayOf("buttonColor", "buttonTextColor")) {
+                                    Color.parseColor(it.value as String)
+                                } else {
+                                    it.value
+                                }
+                            )
+                        }
+                    }
+
+                    MetamapSdk.startFlow(
+                        activity = activity,
+                        clientId = clientId,
+                        flowId = flowId,
+                        metadata = metadataBuilder.build(),
+                        requestCode = 2576,
+                        configurationId = configurationId,
+                        encryptionConfigurationId = encryptionConfigurationId,
+                        verificationStarted = { identityId, verificationId ->
+                            val resultData = "${verificationId.orEmpty()} ${identityId.orEmpty()}"
+                            Handler(Looper.getMainLooper()).post {
+                                channel.invokeMethod("created", resultData)
+                            }
+                        }
+                    )
+                    result.success("showMatiFlow ${android.os.Build.VERSION.RELEASE}")
+                } ?: result.error("NO_ACTIVITY", "Activity is null", null)
+            }
+
+            else -> result.notImplemented()
+        }
+    }
+
+    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+        channel.setMethodCallHandler(null)
+    }
 }

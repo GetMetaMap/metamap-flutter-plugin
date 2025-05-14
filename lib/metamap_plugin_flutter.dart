@@ -1,65 +1,89 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/services.dart';
+import 'package:metamap_plugin_flutter/Result.dart';
 
 class MetaMapFlutter {
-  static var resultCompleter;
+  static const MethodChannel _channel = MethodChannel('mati_flutter');
+  static Completer<Result>? _resultCompleter;
 
-  static const MethodChannel _channel = const MethodChannel('mati_flutter');
+  /// Optional callback for when 'created' event is received
+  static void Function(ResultCreated result)? onCreated;
 
-  static Future<String> showMetaMapFlow(
-      {required String clientId,
-      required String flowId,
-      String? configurationId,
-      String? encryptionConfigurationId,
-      Map<String, dynamic>? metadata}) async {
-    _channel.setMethodCallHandler(handler);
-    resultCompleter = Completer<Result>();
-    metadata?["sdkType"] = "flutter";
+  /// Start the MetaMap flow and wait for the result
+  static Future<Result> showMetaMapFlow({
+    required String clientId,
+    required String flowId,
+    String? configurationId,
+    String? encryptionConfigurationId,
+    Map<String, dynamic>? metadata,
+  }) async {
+    // Prevent multiple concurrent flows
+    if (_resultCompleter != null && !_resultCompleter!.isCompleted) {
+      _resultCompleter!.completeError(
+        StateError("Previous MetaMap flow not completed."),
+      );
+    }
 
-    return await _channel.invokeMethod('showMatiFlow', <String, dynamic>{
+    _resultCompleter = Completer<Result>();
+
+    // Set up native method handler
+    _channel.setMethodCallHandler(_handler);
+
+    // Prepare metadata
+    metadata ??= {};
+    metadata["sdkType"] = "flutter";
+
+    // Start native flow
+    await _channel.invokeMethod('showMatiFlow', {
       'clientId': clientId,
       'flowId': flowId,
       'configurationId': configurationId,
       'encryptionConfigurationId': encryptionConfigurationId,
       'metadata': metadata,
     });
+
+    // Wait for success/cancelled result
+    return _resultCompleter!.future;
   }
 
-  static Future<Result?> handler(MethodCall call) async {
+  /// Handle messages from iOS/Android native layer
+  static Future<void> _handler(MethodCall call) async {
+    final text = call.arguments as String;
+    final parts = text.trim().split(' ');
+    final verificationId = parts.isNotEmpty ? parts[0] : "";
+    final identityId = parts.length > 1 ? parts[1] : "";
+
+    log("📡 Received method: ${call.method}, arguments: $text");
+
     switch (call.method) {
-      case "cancelled":
-        String text = call.arguments;
-        List<String> result = text.split(' ');
-        String verificationId = result[0];
-        String identityId = result[1];
-        resultCompleter.complete(ResultCancelled(verificationId, identityId));
-        return null;
+      case "created":
+        log("🟡 Forwarding 'created' to app via onCreated");
+        onCreated?.call(ResultCreated(verificationId, identityId));
+        break;
+
       case "success":
-        String text = call.arguments;
-        List<String> result = text.split(' ');
-        String verificationId = result[0];
-        String identityId = result[1];
-        resultCompleter.complete(ResultSuccess(verificationId, identityId));
-        return null;
+        if (!(_resultCompleter?.isCompleted ?? true)) {
+          log("✅ Completing with ResultSuccess");
+          _resultCompleter!.complete(ResultSuccess(verificationId, identityId));
+        } else {
+          log("⚠️ Ignored duplicate 'success' event.");
+        }
+        break;
+
+      case "cancelled":
+        if (!(_resultCompleter?.isCompleted ?? true)) {
+          log("🚫 Completing with ResultCancelled");
+          _resultCompleter!
+              .complete(ResultCancelled(verificationId, identityId));
+        } else {
+          log("⚠️ Ignored duplicate 'cancelled' event.");
+        }
+        break;
+
       default:
-        throw MissingPluginException('notImplemented');
+        throw MissingPluginException('❌ Unhandled method: ${call.method}');
     }
   }
-}
-
-abstract class Result {}
-
-class ResultSuccess extends Result {
-  final String verificationId;
-  final String identityId;
-
-  ResultSuccess(this.verificationId, this.identityId);
-}
-
-class ResultCancelled extends Result {
-  final String verificationId;
-  final String identityId;
-
-  ResultCancelled(this.verificationId, this.identityId);
 }
