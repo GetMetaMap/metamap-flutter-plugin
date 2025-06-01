@@ -1,7 +1,7 @@
 name: metamap_plugin_flutter
 description: Flutter plugin for Mati SDK.
 
-version: 4.5.2
+version: 4.5.3
 homepage: 'https://github.com/GetMati/mati-flutter-plugin'
 
 environment:
