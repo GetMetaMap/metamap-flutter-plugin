@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'metamap_plugin_flutter'
-  s.version          = '4.5.10'
+  s.version          = '4.5.11'
   s.summary          = 'Flutter plugin for MetaMap SDK'
   s.description      = <<-DESC
 Flutter plugin for Mati SDK
@@ -13,7 +13,7 @@ Flutter plugin for Mati SDK
   s.dependency 'Flutter'
   s.platform = :ios, '13'
   s.static_framework = true
-  s.dependency 'MetaMapSDK', "3.23.12"
+  s.dependency 'MetaMapSDK', "3.23.14"
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   s.swift_version = '5.0'
 end
