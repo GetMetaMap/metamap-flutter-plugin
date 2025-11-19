@@ -26,20 +26,20 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion 35
     namespace "com.getmati.metamap_plugin_flutte"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-    
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 
     defaultConfig {
@@ -49,6 +49,7 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation ('com.metamap:android-sdk:3.42.11') {
-        exclude group: "com.airbnb.android", module: "lottie-compose"}
+    implementation('com.metamap:android-sdk:3.42.14') {
+        exclude group: "com.airbnb.android", module: "lottie-compose"
+    }
 }
