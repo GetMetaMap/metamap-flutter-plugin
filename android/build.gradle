@@ -27,10 +27,14 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 35
-    namespace "com.getmati.metamap_plugin_flutte"
+    namespace "com.getmati.metamap_plugin_flutter"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        minSdkVersion 21
     }
 
     compileOptions {
@@ -42,8 +46,10 @@ android {
         jvmTarget = "11"
     }
 
-    defaultConfig {
-        minSdkVersion 21
+    packagingOptions {
+        doNotStrip "**/libRecogKitAndroid.so"
+        // (optional) if MetaMap ships other problematic libs, you can add them too:
+        // doNotStrip "**/lib<another>.so"
     }
 }
 
