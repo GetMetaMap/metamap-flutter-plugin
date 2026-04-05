@@ -11,9 +11,9 @@ Flutter plugin for Mati SDK
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '13'
+  s.platform = :ios, '15'
   s.static_framework = true
-  s.dependency 'MetaMapSDK', "3.23.16"
+  s.dependency 'MetaMapSDK', "3.23.17"
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   s.swift_version = '5.0'
 end
