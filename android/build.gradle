@@ -55,7 +55,7 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation('com.metamap:android-sdk:3.42.20') {
+    implementation('com.metamap:android-sdk:3.42.21') {
         exclude group: "com.airbnb.android", module: "lottie-compose"
     }
 }
