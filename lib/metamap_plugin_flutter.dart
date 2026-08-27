@@ -12,6 +12,12 @@ class MetaMapFlutter {
   static void Function(ResultCreated result)? onCreated;
 
   /// Start the MetaMap flow and wait for the result
+  ///
+  /// Phone verification defaults can be passed through [metadata]:
+  /// - `phoneNumber`: national phone number used as the default on the phone
+  ///   verification step (e.g. "5551234567").
+  /// - `phoneCountryCode`: ISO 3166-1 alpha-2 country code for the phone
+  ///   verification step (e.g. "US", "MX").
   static Future<Result> showMetaMapFlow({
     required String clientId,
     required String flowId,
